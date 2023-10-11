@@ -1,0 +1,10 @@
+CXX=@CXX@
+CXXFLAGS=@CXXFLAGS@ -std=c++11
+all: simpleQCDCL
+simpleQCDCL: solver.cpp QCIRParser.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $^
+clean:
+	rm -f simpleQCDCL makefile cnfs/*.err cnfs/*.log
+test: all
+	./cnfs/test.sh
+.PHONY: all clean test
